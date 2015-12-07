@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Blog</string>
+    <string name="NewNote">New Note</string>
+    <string name="noteTile">My Note Tile</string>
+</resources>
