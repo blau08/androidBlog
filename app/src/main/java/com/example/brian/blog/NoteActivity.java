@@ -4,17 +4,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.brian.blog.adapters.ItemsArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -23,8 +21,8 @@ import java.util.ArrayList;
  */
 public class NoteActivity extends Activity {
 
-    ArrayList<String> mItems;
-    ItemsArrayAdapter mItemsArrayAdapter;
+    ArrayList<String> mItems = new ArrayList<>();;
+    ArrayAdapter<String> mArrayAdapter;
     EditText mNewItemText;
     ListView mItemsListView;
 
@@ -32,10 +30,10 @@ public class NoteActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
-        mItems = new ArrayList<>();
-        mItemsArrayAdapter = new ItemsArrayAdapter(this, mItems);
+
+        mArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mItems);
         mItemsListView = (ListView)findViewById(R.id.itemsListView);
-        mItemsListView.setAdapter(mItemsArrayAdapter);
+        mItemsListView.setAdapter(mArrayAdapter);
 
     }
 
@@ -70,7 +68,7 @@ public class NoteActivity extends Activity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mItems.add(mNewItemText.getText().toString());
-                mItemsArrayAdapter.notifyDataSetChanged();
+                mArrayAdapter.notifyDataSetChanged();
             }
         });
         builder.setNegativeButton("Cancel", null)

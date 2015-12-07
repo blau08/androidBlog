@@ -2,4 +2,5 @@
     <string name="app_name">Blog</string>
     <string name="NewNote">New Note</string>
     <string name="noteTile">My Note Tile</string>
+    <string name="no_blog">There is no data to display.</string>
 </resources>
